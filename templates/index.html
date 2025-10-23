@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CallCenterAI - Ticket Classification</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <h1>CallCenterAI</h1>
+            </div>
+            <div class="status">
+                <div class="status-indicator"></div>
+                <span>System Online</span>
+            </div>
+        </header>
+
+        <div class="chat-container">
+            <div class="chat-history" id="chatHistory">
+                <div class="message bot-message">
+                    <div class="message-header">
+                        <span>CallCenterAI</span>
+                        <span>Just now</span>
+                    </div>
+                    <p>Hello! I'm CallCenterAI, your intelligent ticket classification assistant. I can help categorize your customer support tickets using advanced NLP models.</p>
+                    <p>Please describe your customer issue in the text area, and I'll classify it into the appropriate category.</p>
+                </div>
+            </div>
+
+            <div class="chat-input-container">
+                <div class="info-card">
+                    <h2>About CallCenterAI</h2>
+                    <p>This system uses two NLP models to classify customer tickets:</p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li><strong>TF-IDF + SVM</strong>: For simple, straightforward cases</li>
+                        <li><strong>Transformer</strong>: For complex or multilingual cases</li>
+                    </ul>
+                    <p style="margin-top: 10px;">The AI agent automatically selects the best model based on text complexity, language, and confidence scores.</p>
+                </div>
+
+                <div class="chat-input">
+                    <textarea id="userInput" placeholder="Describe the customer issue here..."></textarea>
+                    <div class="button-group">
+                        <button class="clear-btn" id="clearBtn">Clear</button>
+                        <button class="submit-btn" id="submitBtn">Classify Ticket</button>
+                    </div>
+                </div>
+
+                <div class="loading" id="loadingIndicator">
+                    <div class="spinner"></div>
+                    <p>Processing your request...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

@@ -1,26 +1,46 @@
-from flask import Flask, render_template, request, jsonify
-from flask_cors import CORS
 import os
+
 from dotenv import load_dotenv
+from flask import Flask, jsonify, render_template, request
+from flask_cors import CORS
 from requests import post
 
 load_dotenv()
 
-app = Flask(__name__, template_folder='templates', static_folder='static')
+app = Flask(__name__, template_folder="templates", static_folder="static")
 CORS(app)
 
-MODEL_API_URL = os.getenv('MODEL_API_URL')
+# Update this to match your actual API endpoint
+MODEL_API_URL = os.getenv("MODEL_API_URL")
 
-@app.get('/')
+
+@app.get("/")
 def index():
-    return render_template('index.html')
+    return render_template("index.html")
 
-@app.post('/api/prompt')
+
+@app.post("/api/prompt")
 def prompt():
     data = request.get_json()
-    prompt = data['prompt']
-    response = post(MODEL_API_URL, json={'prompt': prompt})
-    return jsonify(response.json()), response.status_code
+    prompt_text = data["prompt"]
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    # Call your actual model API
+    response = post(MODEL_API_URL, json={"text": prompt_text})
+    print(response.json())
+    if response.status_code == 200:
+        return jsonify(response.json()), 200
+    else:
+        return (
+            jsonify(
+                {
+                    "error": "Failed to process request",
+                    "input": prompt_text,
+                    "prediction": "Unknown",
+                }
+            ),
+            response.status_code,
+        )
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=True)
