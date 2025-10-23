@@ -28,19 +28,6 @@ jobs:
           if [ -f requirements.dev ]; then pip install -r requirements.dev; fi
           pip install pytest
 
-      - name: Create .env file for tests
-        run: |
-          echo "DATABRICKS_HOST=${DATABRICKS_HOST}" > .env
-          echo "DATABRICKS_TOKEN=${DATABRICKS_TOKEN}" >> .env
-          echo "MODEL_URI=${MODEL_URI}" >> .env
-          echo "EXPERIMENT_NAME=${EXPERIMENT_NAME}" >> .env
-          echo "✅ .env file created for test environment"
-
-      - name: Mask secrets in logs
-        run: |
-          echo "🔒 Masking secrets..."
-          cat .env | sed 's/=.*/=********/' || true
-
       - name: Run unit tests
         run: |
           PYTHONPATH=. pytest tests/unit/ -v --disable-warnings
