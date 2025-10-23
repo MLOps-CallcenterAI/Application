@@ -3,12 +3,6 @@ name: Stage CI Pipeline
 on:
   push:
     branches: [main]
-    paths:
-      - 'src/**'
-      - 'test/**'
-      - 'Dockerfile'
-      - 'requirements'
-      - 'requirements.dev'
   workflow_dispatch:
 
 jobs:
