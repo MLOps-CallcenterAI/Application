@@ -25,7 +25,7 @@ def prompt():
     prompt_text = data["prompt"]
 
     # Call your actual model API
-    response = post(MODEL_API_URL+'/predict_one', json={"text": prompt_text})
+    response = post(MODEL_API_URL + "/predict_one", json={"text": prompt_text})
     print(response.json())
     if response.status_code == 200:
         return jsonify(response.json()), 200
