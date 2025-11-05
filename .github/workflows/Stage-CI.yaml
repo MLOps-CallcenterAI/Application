@@ -1,18 +1,16 @@
-name: Stage CI Pipeline
+# Workflow file for this run
+name: Stage-C1 Pipeline
 
 on:
   push:
     branches: [main]
-      paths-ignore:
-      - '**.md'
-      - 'docs/**'
-      - 'images/**'
-      - '*.txt'
+    paths-ignore:
+      - '**/*.abc'
+      - 'class/*'
+      - 'language/*'
+      - '**/*.txt'
   workflow_dispatch:
 
 jobs:
   Lint:
-    uses: ./.github/workflows/lint.yaml
-
-
-
+    uses: ./github/workflows/Lint.yaml
