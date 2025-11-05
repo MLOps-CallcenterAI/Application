@@ -17,25 +17,4 @@ jobs:
   Test:
     uses: ./.github/workflows/test.yaml
 
-  Build_and_Push:
-    needs: [Lint, Test]
-    uses: ./.github/workflows/build_and_push.yaml
-    secrets:
-      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
-  Get_Latest_Version:
-    needs: Build_and_Push
-    uses: ./.github/workflows/get_latest_version.yaml
-    secrets:
-      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-
-  Deploy:
-    needs: Get_Latest_Version
-    uses: ./.github/workflows/deploy.yaml
-    with:
-      filename: "manifests/default/app.yaml"
-      image_version: ${{ needs.Get_Latest_Version.outputs.latest_tag }}
-    secrets:
-      TOKEN: ${{ secrets.TOKEN }}
