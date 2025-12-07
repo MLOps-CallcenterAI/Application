@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CallCenterAI - Ticket Classification</title>
+    <title>CallCenterAI - Intelligent Ticket Classification</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
     <div class="container">
         <header>
             <div class="logo">
-                <div class="logo-icon">AI</div>
-                <h1>CallCenterAI</h1>
+                <div class="logo-icon">🤖</div>
+                <h1>CallCenterAI Router Agent</h1>
             </div>
             <div class="status">
                 <div class="status-indicator"></div>
-                <span>System Online</span>
+                <span>Checking...</span>
             </div>
         </header>
 
@@ -23,36 +23,58 @@
             <div class="chat-history" id="chatHistory">
                 <div class="message bot-message">
                     <div class="message-header">
-                        <span>CallCenterAI</span>
+                        <span>CallCenterAI Router Agent</span>
                         <span>Just now</span>
                     </div>
-                    <p>Hello! I'm CallCenterAI, your intelligent ticket classification assistant. I can help categorize your customer support tickets using advanced NLP models.</p>
-                    <p>Please describe your customer issue in the text area, and I'll classify it into the appropriate category.</p>
+                    <p>👋 Hello! I'm the CallCenterAI Router Agent - your intelligent ticket classification system powered by advanced NLP.</p>
+                    <p>I automatically analyze your tickets and route them to the best model:</p>
+                    <ul style="margin: 10px 0 10px 20px; line-height: 1.8;">
+                        <li><strong>🚀 TF-IDF + SVM</strong> - Fast classification for simple, straightforward tickets</li>
+                        <li><strong>🧠 Transformer</strong> - Deep understanding for complex, technical, or multilingual issues</li>
+                    </ul>
+                    <p>The router makes intelligent decisions based on:</p>
+                    <ul style="margin: 10px 0 10px 20px; line-height: 1.8;">
+                        <li>Text complexity and length</li>
+                        <li>Technical terminology detection</li>
+                        <li>Language mixing (English, French, Arabic)</li>
+                        <li>Code snippets and error logs</li>
+                        <li>Sentence structure analysis</li>
+                    </ul>
+                    <p style="margin-top: 10px;">📝 Describe your customer issue below, and I'll classify it with full transparency about the routing decision!</p>
                 </div>
             </div>
 
             <div class="chat-input-container">
                 <div class="info-card">
-                    <h2>About CallCenterAI</h2>
-                    <p>This system uses two NLP models to classify customer tickets:</p>
-                    <ul style="margin-left: 20px; margin-top: 10px;">
-                        <li><strong>TF-IDF + SVM</strong>: For simple, straightforward cases</li>
-                        <li><strong>Transformer</strong>: For complex or multilingual cases</li>
+                    <h2>🎯 How It Works</h2>
+                    <p><strong>Step 1:</strong> Enter your customer ticket description</p>
+                    <p><strong>Step 2:</strong> Router Agent analyzes complexity (0.0 - 1.0 scale)</p>
+                    <p><strong>Step 3:</strong> Automatically routes to optimal model:</p>
+                    <ul style="margin-left: 20px; margin-top: 8px; line-height: 1.6;">
+                        <li><strong>Score &lt; 0.50</strong> → TF-IDF (fast, efficient)</li>
+                        <li><strong>Score ≥ 0.50</strong> → Transformer (accurate, contextual)</li>
                     </ul>
-                    <p style="margin-top: 10px;">The AI agent automatically selects the best model based on text complexity, language, and confidence scores.</p>
+                    <p style="margin-top: 10px;"><strong>Step 4:</strong> Get prediction with full transparency:</p>
+                    <ul style="margin-left: 20px; margin-top: 8px; line-height: 1.6;">
+                        <li>✅ Category classification</li>
+                        <li>📊 Confidence score</li>
+                        <li>🔍 Routing reasoning</li>
+                        <li>⚡ Processing time</li>
+                        <li>📈 Complexity analysis</li>
+                    </ul>
                 </div>
 
                 <div class="chat-input">
-                    <textarea id="userInput" placeholder="Describe the customer issue here..."></textarea>
+                    <textarea id="userInput" placeholder="Describe the customer issue here... (Try simple or complex tickets to see different models in action!)"></textarea>
                     <div class="button-group">
                         <button class="clear-btn" id="clearBtn">Clear</button>
-                        <button class="submit-btn" id="submitBtn">Classify Ticket</button>
+                        <button class="submit-btn" id="submitBtn">🚀 Classify Ticket</button>
                     </div>
                 </div>
 
                 <div class="loading" id="loadingIndicator">
                     <div class="spinner"></div>
-                    <p>Processing your request...</p>
+                    <p>Analyzing ticket and routing to optimal model...</p>
                 </div>
             </div>
         </div>
